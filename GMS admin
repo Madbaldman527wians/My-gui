@@ -92,4 +92,4 @@ end
 -- Inicialmente oculto
 frame.Visible = false
 
-return G2L
+
