@@ -68,7 +68,7 @@ end
 -- Botões
 criarBotao("No Cooldown", 72, "URL_NO_COOLDOWN")
 criarBotao("Speed Bypass", 94, "URL_SPEED_BYPASS")
-criarBotao("Anti Teleport", 118, "https://raw.githubusercontent.com/Madbaldman527wians/Raw-test/refs/heads/main/Anti%20teleport")
+criarBotao("Anti Teleport", 118, "URL_ANTI_TELEPORT")
 criarBotao("Anti Jail", 142, "URL_ANTI_JAIL")
 
 -- Exportação do subGUI
