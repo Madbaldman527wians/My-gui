@@ -1,490 +1,95 @@
+--[[
+SubGUI Externo: Anti Detection Scripts
+Deve ser salvo em URL separado e chamado pelo Loader
+]]
 local CollectionService = game:GetService("CollectionService")
 local CoreGui = game:GetService("CoreGui")
 local G2L = {}
 
--- ScreenGui principal no CoreGui
-G2L["GMSadmin_1"] = Instance.new("ScreenGui", CoreGui)
-G2L["GMSadmin_1"].Name = "GMSadmin"
-G2L["GMSadmin_1"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-CollectionService:AddTag(G2L["GMSadmin_1"], "main")
+-- ScreenGui do subGUI
+G2L["AntiDetectionGUI"] = Instance.new("ScreenGui")
+G2L["AntiDetectionGUI"].Name = "AntiDetectionGUI"
+G2L["AntiDetectionGUI"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+G2L["AntiDetectionGUI"].Parent = CoreGui
+CollectionService:AddTag(G2L["AntiDetectionGUI"], "subgui")
 
--- Frame Anti Detection Scripts
-G2L["Anti Detection Scripts_2"] = Instance.new("Frame", G2L["GMSadmin_1"])
-G2L["Anti Detection Scripts_2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-G2L["Anti Detection Scripts_2"].AnchorPoint = Vector2.new(0.5, 0)
-G2L["Anti Detection Scripts_2"].Size = UDim2.new(0, 418, 0, 132)
-G2L["Anti Detection Scripts_2"].Position = UDim2.new(0.5, 12, 0, 226)
-G2L["Anti Detection Scripts_2"].Name = "Anti Detection Scripts"
+-- Frame principal
+local frame = Instance.new("Frame", G2L["AntiDetectionGUI"])
+frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+frame.AnchorPoint = Vector2.new(0.5, 0)
+frame.Size = UDim2.new(0, 418, 0, 132)
+frame.Position = UDim2.new(0.5, 12, 0, 226)
+frame.Name = "Anti Detection Scripts"
 
--- UIGradient e UICorner (mantidos)
-G2L["UICorner_5"] = Instance.new("UICorner", G2L["Anti Detection Scripts_2"])
-G2L["UICorner_5"].CornerRadius = UDim.new(0, 13)
+-- UICorner e UIGradient
+local corner = Instance.new("UICorner", frame)
+corner.CornerRadius = UDim.new(0, 13)
 
-G2L["UIGradient_7"] = Instance.new("UIGradient", G2L["Anti Detection Scripts_2"])
-G2L["UIGradient_7"].Rotation = 80
-G2L["UIGradient_7"].Offset = Vector2.new(0, 0.65)
-G2L["UIGradient_7"].Color = ColorSequence.new{
-ColorSequenceKeypoint.new(0.000, Color3.fromRGB(0, 0, 0)),
-ColorSequenceKeypoint.new(1.000, Color3.fromRGB(0, 0, 255))
+local gradient = Instance.new("UIGradient", frame)
+gradient.Rotation = 80
+gradient.Offset = Vector2.new(0, 0.65)
+gradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 255))
 }
 
--- Título do frame
-G2L["Anti Detection Title_8"] = Instance.new("TextLabel", G2L["Anti Detection Scripts_2"])
-G2L["Anti Detection Title_8"].TextWrapped = true
-G2L["Anti Detection Title_8"].TextSize = 14
-G2L["Anti Detection Title_8"].TextXAlignment = Enum.TextXAlignment.Left
-G2L["Anti Detection Title_8"].TextScaled = true
-G2L["Anti Detection Title_8"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-G2L["Anti Detection Title_8"].FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-G2L["Anti Detection Title_8"].TextColor3 = Color3.fromRGB(241, 241, 241)
-G2L["Anti Detection Title_8"].BackgroundTransparency = 1
-G2L["Anti Detection Title_8"].Size = UDim2.new(0, 316, 0, 28)
-G2L["Anti Detection Title_8"].Text = "Anti Detection Scripts"
-G2L["Anti Detection Title_8"].Position = UDim2.new(0.04287, -6, 0.10006, -8)
+-- Título
+local title = Instance.new("TextLabel", frame)
+title.TextWrapped = true
+title.TextScaled = true
+title.TextXAlignment = Enum.TextXAlignment.Left
+title.BackgroundTransparency = 1
+title.Size = UDim2.new(0, 316, 0, 28)
+title.Position = UDim2.new(0.04287, -6, 0.10006, -8)
+title.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+title.TextColor3 = Color3.fromRGB(241, 241, 241)
+title.Text = "Anti Detection Scripts"
 
 -- Subtitle
-G2L["Subtitle_3"] = Instance.new("TextLabel", G2L["Anti Detection Scripts_2"])
-G2L["Subtitle_3"].TextWrapped = true
-G2L["Subtitle_3"].TextSize = 14
-G2L["Subtitle_3"].TextXAlignment = Enum.TextXAlignment.Left
-G2L["Subtitle_3"].TextTransparency = 0.3
-G2L["Subtitle_3"].TextScaled = true
-G2L["Subtitle_3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-G2L["Subtitle_3"].FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-G2L["Subtitle_3"].TextColor3 = Color3.fromRGB(255, 255, 255)
-G2L["Subtitle_3"].BackgroundTransparency = 1
-G2L["Subtitle_3"].Size = UDim2.new(0, 160, 0, 18)
-G2L["Subtitle_3"].Text = "Bypass List"
-G2L["Subtitle_3"].Position = UDim2.new(0.043, 0, 0.2, 12)
-
--- Botão Anti Admin
-G2L["Options_4"] = Instance.new("TextButton", G2L["Anti Detection Scripts_2"])
-G2L["Options_4"].TextWrapped = true
-G2L["Options_4"].BorderSizePixel = 0
-G2L["Options_4"].TextScaled = true
-G2L["Options_4"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-G2L["Options_4"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-G2L["Options_4"].TextColor3 = Color3.fromRGB(193, 193, 193)
-G2L["Options_4"].BackgroundTransparency = 1
-G2L["Options_4"].Size = UDim2.new(0, 218, 0, 16)
-G2L["Options_4"].Text = "Anti admin"
-G2L["Options_4"].Position = UDim2.new(0, 2, 0, 66)
-G2L["Options_4"].MouseButton1Click:Connect(function()
-loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Anti-chat-admin-32647"))()
-end)
-
--- Botão Anti Kick
-G2L["Anti Kick_6"] = Instance.new("TextButton", G2L["Anti Detection Scripts_2"])
-G2L["Anti Kick_6"].TextWrapped = true
-G2L["Anti Kick_6"].BorderSizePixel = 0
-G2L["Anti Kick_6"].TextScaled = true
-G2L["Anti Kick_6"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-G2L["Anti Kick_6"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-G2L["Anti Kick_6"].TextColor3 = Color3.fromRGB(193, 193, 193)
-G2L["Anti Kick_6"].BackgroundTransparency = 1
-G2L["Anti Kick_6"].Size = UDim2.new(0, 218, 0, 16)
-G2L["Anti Kick_6"].Text = "Anti Kick"
-G2L["Anti Kick_6"].Position = UDim2.new(0, 2, 0, 90)
-G2L["Anti Kick_6"].MouseButton1Click:Connect(function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/AntiCheat/main/Bypass"))()
-end)
-
--- Botão Newindex Bypass
-G2L["Anti Newindex_9"] = Instance.new("TextButton", G2L["Anti Detection Scripts_2"])
-G2L["Anti Newindex_9"].TextWrapped = true
-G2L["Anti Newindex_9"].BorderSizePixel = 0
-G2L["Anti Newindex_9"].TextScaled = true
-G2L["Anti Newindex_9"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-G2L["Anti Newindex_9"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-G2L["Anti Newindex_9"].TextColor3 = Color3.fromRGB(193, 193, 193)
-G2L["Anti Newindex_9"].BackgroundTransparency = 1
-G2L["Anti Newindex_9"].Size = UDim2.new(0, 222, 0, 16)
-G2L["Anti Newindex_9"].Text = "Newindex Bypass"
-G2L["Anti Newindex_9"].Position = UDim2.new(0, -2, 0, 114)
-G2L["Anti Newindex_9"].MouseButton1Click:Connect(function()
-loadstring(game:HttpGet("https://rawscripts.net/raw/Baseplate-adonis-and-newindex-bypass-source-12378"))()
-end)
-
-return G2L["GMSadmin_1"], requireG2L["Name_4"]["Text"] = [[GMS]];
-G2L["Name_4"]["Name"] = [[Name]];
-G2L["Name_4"]["Position"] = UDim2.new(0, 2, 0, 24);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.Enable/Disable gui.UIGradient
-G2L["UIGradient_5"] = Instance.new("UIGradient", G2L["Enable/Disable gui_2"]);
-G2L["UIGradient_5"]["Rotation"] = -50;
-G2L["UIGradient_5"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(0, 0, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(0, 0, 0))};
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin
-G2L["GmsAdmin_6"] = Instance.new("Frame", G2L["GMSadmin_1"]);
-G2L["GmsAdmin_6"]["Visible"] = false;
-G2L["GmsAdmin_6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["GmsAdmin_6"]["AnchorPoint"] = Vector2.new(0.5, 0);
-G2L["GmsAdmin_6"]["Size"] = UDim2.new(0, 412, 0, 188);
-G2L["GmsAdmin_6"]["Position"] = UDim2.new(0.5, 12, 0, 8);
-G2L["GmsAdmin_6"]["Name"] = [[GmsAdmin]];
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Subtitle
-G2L["Subtitle_7"] = Instance.new("TextLabel", G2L["GmsAdmin_6"]);
-G2L["Subtitle_7"]["TextWrapped"] = true;
-G2L["Subtitle_7"]["TextSize"] = 14;
-G2L["Subtitle_7"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["Subtitle_7"]["TextTransparency"] = 0.3;
-G2L["Subtitle_7"]["TextScaled"] = true;
-G2L["Subtitle_7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Subtitle_7"]["FontFace"] = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
-G2L["Subtitle_7"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Subtitle_7"]["BackgroundTransparency"] = 1;
-G2L["Subtitle_7"]["Size"] = UDim2.new(0, 160, 0, 18);
-G2L["Subtitle_7"]["Text"] = [[Made By Bryan]];
-G2L["Subtitle_7"]["Name"] = [[Subtitle]];
-G2L["Subtitle_7"]["Position"] = UDim2.new(0.043, 0, 0.2, 2);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Ant
-G2L["Ant_8"] = Instance.new("TextLabel", G2L["GmsAdmin_6"]);
-G2L["Ant_8"]["TextWrapped"] = true;
-G2L["Ant_8"]["BorderSizePixel"] = 0;
-G2L["Ant_8"]["TextScaled"] = true;
-G2L["Ant_8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Ant_8"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["Ant_8"]["TextColor3"] = Color3.fromRGB(193, 193, 193);
-G2L["Ant_8"]["BackgroundTransparency"] = 1;
-G2L["Ant_8"]["Size"] = UDim2.new(0, 160, 0, 16);
-G2L["Ant_8"]["Text"] = [[Anti Detection List]];
-G2L["Ant_8"]["Name"] = [[Ant]];
-G2L["Ant_8"]["Position"] = UDim2.new(0, 26, 0, 118);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Ant.Anti Detection Scripts
-G2L["Anti Detection Scripts_9"] = Instance.new("Frame", G2L["Ant_8"]);
-G2L["Anti Detection Scripts_9"]["Visible"] = false;
-G2L["Anti Detection Scripts_9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Anti Detection Scripts_9"]["AnchorPoint"] = Vector2.new(0.5, 0);
-G2L["Anti Detection Scripts_9"]["Size"] = UDim2.new(0, 418, 0, 132);
-G2L["Anti Detection Scripts_9"]["Position"] = UDim2.new(0.5, 104, 0, 78);
-G2L["Anti Detection Scripts_9"]["Name"] = [[Anti Detection Scripts]];
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Ant.Anti Detection Scripts.Subtitle
-G2L["Subtitle_a"] = Instance.new("TextLabel", G2L["Anti Detection Scripts_9"]);
-G2L["Subtitle_a"]["TextWrapped"] = true;
-G2L["Subtitle_a"]["TextSize"] = 14;
-G2L["Subtitle_a"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["Subtitle_a"]["TextTransparency"] = 0.3;
-G2L["Subtitle_a"]["TextScaled"] = true;
-G2L["Subtitle_a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Subtitle_a"]["FontFace"] = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
-G2L["Subtitle_a"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Subtitle_a"]["BackgroundTransparency"] = 1;
-G2L["Subtitle_a"]["Size"] = UDim2.new(0, 160, 0, 18);
-G2L["Subtitle_a"]["Text"] = [[Bypass List]];
-G2L["Subtitle_a"]["Name"] = [[Subtitle]];
-G2L["Subtitle_a"]["Position"] = UDim2.new(0.043, 0, 0.2, 12);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Ant.Anti Detection Scripts.Options
-G2L["Options_b"] = Instance.new("TextLabel", G2L["Anti Detection Scripts_9"]);
-G2L["Options_b"]["TextWrapped"] = true;
-G2L["Options_b"]["BorderSizePixel"] = 0;
-G2L["Options_b"]["TextScaled"] = true;
-G2L["Options_b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Options_b"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["Options_b"]["TextColor3"] = Color3.fromRGB(193, 193, 193);
-G2L["Options_b"]["BackgroundTransparency"] = 1;
-G2L["Options_b"]["Size"] = UDim2.new(0, 218, 0, 16);
-G2L["Options_b"]["Text"] = [[Anti admin]];
-G2L["Options_b"]["Name"] = [[Options]];
-G2L["Options_b"]["Position"] = UDim2.new(0, 2, 0, 66);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Ant.Anti Detection Scripts.UICorner
-G2L["UICorner_c"] = Instance.new("UICorner", G2L["Anti Detection Scripts_9"]);
-G2L["UICorner_c"]["CornerRadius"] = UDim.new(0, 13);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Ant.Anti Detection Scripts.Anti Kick
-G2L["Anti Kick_d"] = Instance.new("TextLabel", G2L["Anti Detection Scripts_9"]);
-G2L["Anti Kick_d"]["TextWrapped"] = true;
-G2L["Anti Kick_d"]["BorderSizePixel"] = 0;
-G2L["Anti Kick_d"]["TextScaled"] = true;
-G2L["Anti Kick_d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Anti Kick_d"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["Anti Kick_d"]["TextColor3"] = Color3.fromRGB(193, 193, 193);
-G2L["Anti Kick_d"]["BackgroundTransparency"] = 1;
-G2L["Anti Kick_d"]["Size"] = UDim2.new(0, 218, 0, 16);
-G2L["Anti Kick_d"]["Text"] = [[anti Kick]];
-G2L["Anti Kick_d"]["Name"] = [[Anti Kick]];
-G2L["Anti Kick_d"]["Position"] = UDim2.new(0, 2, 0, 90);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Ant.Anti Detection Scripts.UIGradient
-G2L["UIGradient_e"] = Instance.new("UIGradient", G2L["Anti Detection Scripts_9"]);
-G2L["UIGradient_e"]["Rotation"] = 80;
-G2L["UIGradient_e"]["Offset"] = Vector2.new(0, 0.65);
-G2L["UIGradient_e"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(0, 0, 0)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(0, 0, 255))};
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Ant.Anti Detection Scripts.Anti Detection Title
-G2L["Anti Detection Title_f"] = Instance.new("TextLabel", G2L["Anti Detection Scripts_9"]);
-G2L["Anti Detection Title_f"]["TextWrapped"] = true;
-G2L["Anti Detection Title_f"]["TextSize"] = 14;
-G2L["Anti Detection Title_f"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["Anti Detection Title_f"]["TextScaled"] = true;
-G2L["Anti Detection Title_f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Anti Detection Title_f"]["FontFace"] = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["Anti Detection Title_f"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["Anti Detection Title_f"]["BackgroundTransparency"] = 1;
-G2L["Anti Detection Title_f"]["Size"] = UDim2.new(0, 316, 0, 28);
-G2L["Anti Detection Title_f"]["Text"] = [[Anti Detection Scripts]];
-G2L["Anti Detection Title_f"]["Name"] = [[Anti Detection Title]];
-G2L["Anti Detection Title_f"]["Position"] = UDim2.new(0.04287, -6, 0.10006, -8);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Ant.Anti Detection Scripts.Anti Newindex
-G2L["Anti Newindex_10"] = Instance.new("TextLabel", G2L["Anti Detection Scripts_9"]);
-G2L["Anti Newindex_10"]["TextWrapped"] = true;
-G2L["Anti Newindex_10"]["BorderSizePixel"] = 0;
-G2L["Anti Newindex_10"]["TextScaled"] = true;
-G2L["Anti Newindex_10"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Anti Newindex_10"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["Anti Newindex_10"]["TextColor3"] = Color3.fromRGB(193, 193, 193);
-G2L["Anti Newindex_10"]["BackgroundTransparency"] = 1;
-G2L["Anti Newindex_10"]["Size"] = UDim2.new(0, 222, 0, 16);
-G2L["Anti Newindex_10"]["Text"] = [[Newindex Bypass]];
-G2L["Anti Newindex_10"]["Name"] = [[Anti Newindex]];
-G2L["Anti Newindex_10"]["Position"] = UDim2.new(0, -2, 0, 114);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.UICorner
-G2L["UICorner_11"] = Instance.new("UICorner", G2L["GmsAdmin_6"]);
-G2L["UICorner_11"]["CornerRadius"] = UDim.new(0, 13);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Shhh
-G2L["Shhh_12"] = Instance.new("TextLabel", G2L["GmsAdmin_6"]);
-G2L["Shhh_12"]["TextWrapped"] = true;
-G2L["Shhh_12"]["BorderSizePixel"] = 0;
-G2L["Shhh_12"]["TextScaled"] = true;
-G2L["Shhh_12"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Shhh_12"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["Shhh_12"]["TextColor3"] = Color3.fromRGB(193, 193, 193);
-G2L["Shhh_12"]["BackgroundTransparency"] = 1;
-G2L["Shhh_12"]["Size"] = UDim2.new(0, 160, 0, 16);
-G2L["Shhh_12"]["Text"] = [[Bypassers]];
-G2L["Shhh_12"]["Name"] = [[Shhh]];
-G2L["Shhh_12"]["Position"] = UDim2.new(0, 26, 0, 94);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Shhh.Bypass
-G2L["Bypass_13"] = Instance.new("Frame", G2L["Shhh_12"]);
-G2L["Bypass_13"]["Visible"] = false;
-G2L["Bypass_13"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Bypass_13"]["AnchorPoint"] = Vector2.new(0.5, 0);
-G2L["Bypass_13"]["Size"] = UDim2.new(0, 262, 0, 174);
-G2L["Bypass_13"]["Position"] = UDim2.new(0.5, 102, 0, 102);
-G2L["Bypass_13"]["Name"] = [[Bypass]];
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Shhh.Bypass.Anti Teleport
-G2L["Anti Teleport_14"] = Instance.new("TextLabel", G2L["Bypass_13"]);
-G2L["Anti Teleport_14"]["TextWrapped"] = true;
-G2L["Anti Teleport_14"]["BorderSizePixel"] = 0;
-G2L["Anti Teleport_14"]["TextScaled"] = true;
-G2L["Anti Teleport_14"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Anti Teleport_14"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["Anti Teleport_14"]["TextColor3"] = Color3.fromRGB(193, 193, 193);
-G2L["Anti Teleport_14"]["BackgroundTransparency"] = 1;
-G2L["Anti Teleport_14"]["Size"] = UDim2.new(0, 262, 0, 16);
-G2L["Anti Teleport_14"]["Text"] = [[Anti Teleport]];
-G2L["Anti Teleport_14"]["Name"] = [[Anti Teleport]];
-G2L["Anti Teleport_14"]["Position"] = UDim2.new(0, 0, 0, 118);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Shhh.Bypass.Subtitle
-G2L["Subtitle_15"] = Instance.new("TextLabel", G2L["Bypass_13"]);
-G2L["Subtitle_15"]["TextWrapped"] = true;
-G2L["Subtitle_15"]["TextSize"] = 14;
-G2L["Subtitle_15"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["Subtitle_15"]["TextTransparency"] = 0.3;
-G2L["Subtitle_15"]["TextScaled"] = true;
-G2L["Subtitle_15"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Subtitle_15"]["FontFace"] = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
-G2L["Subtitle_15"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Subtitle_15"]["BackgroundTransparency"] = 1;
-G2L["Subtitle_15"]["Size"] = UDim2.new(0, 136, 0, 30);
-G2L["Subtitle_15"]["Text"] = [[Bypass instances and etc.]];
-G2L["Subtitle_15"]["Name"] = [[Subtitle]];
-G2L["Subtitle_15"]["Position"] = UDim2.new(0.043, -4, 0.2, 2);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Shhh.Bypass.Anti Teleport
-G2L["Anti Teleport_16"] = Instance.new("TextLabel", G2L["Bypass_13"]);
-G2L["Anti Teleport_16"]["TextWrapped"] = true;
-G2L["Anti Teleport_16"]["BorderSizePixel"] = 0;
-G2L["Anti Teleport_16"]["TextScaled"] = true;
-G2L["Anti Teleport_16"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Anti Teleport_16"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["Anti Teleport_16"]["TextColor3"] = Color3.fromRGB(193, 193, 193);
-G2L["Anti Teleport_16"]["BackgroundTransparency"] = 1;
-G2L["Anti Teleport_16"]["Size"] = UDim2.new(0, 262, 0, 16);
-G2L["Anti Teleport_16"]["Text"] = [[anti jail]];
-G2L["Anti Teleport_16"]["Name"] = [[Anti Teleport]];
-G2L["Anti Teleport_16"]["Position"] = UDim2.new(0, 0, 0, 142);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Shhh.Bypass.UICorner
-G2L["UICorner_17"] = Instance.new("UICorner", G2L["Bypass_13"]);
-G2L["UICorner_17"]["CornerRadius"] = UDim.new(0, 13);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Shhh.Bypass.No Cooldown Script
-G2L["No Cooldown Script_18"] = Instance.new("TextLabel", G2L["Bypass_13"]);
-G2L["No Cooldown Script_18"]["TextWrapped"] = true;
-G2L["No Cooldown Script_18"]["BorderSizePixel"] = 0;
-G2L["No Cooldown Script_18"]["TextScaled"] = true;
-G2L["No Cooldown Script_18"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["No Cooldown Script_18"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["No Cooldown Script_18"]["TextColor3"] = Color3.fromRGB(193, 193, 193);
-G2L["No Cooldown Script_18"]["BackgroundTransparency"] = 1;
-G2L["No Cooldown Script_18"]["Size"] = UDim2.new(0, 262, 0, 16);
-G2L["No Cooldown Script_18"]["Text"] = [[No Cooldown]];
-G2L["No Cooldown Script_18"]["Name"] = [[No Cooldown Script]];
-G2L["No Cooldown Script_18"]["Position"] = UDim2.new(0, -2, 0, 72);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Shhh.Bypass.UIGradient
-G2L["UIGradient_19"] = Instance.new("UIGradient", G2L["Bypass_13"]);
-G2L["UIGradient_19"]["Rotation"] = 80;
-G2L["UIGradient_19"]["Offset"] = Vector2.new(0, 0.65);
-G2L["UIGradient_19"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(0, 0, 0)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(0, 0, 255))};
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Shhh.Bypass.Shhh
-G2L["Shhh_1a"] = Instance.new("TextLabel", G2L["Bypass_13"]);
-G2L["Shhh_1a"]["TextWrapped"] = true;
-G2L["Shhh_1a"]["BorderSizePixel"] = 0;
-G2L["Shhh_1a"]["TextScaled"] = true;
-G2L["Shhh_1a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Shhh_1a"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["Shhh_1a"]["TextColor3"] = Color3.fromRGB(193, 193, 193);
-G2L["Shhh_1a"]["BackgroundTransparency"] = 1;
-G2L["Shhh_1a"]["Size"] = UDim2.new(0, 258, 0, 16);
-G2L["Shhh_1a"]["Text"] = [[Speed Bypass]];
-G2L["Shhh_1a"]["Name"] = [[Shhh]];
-G2L["Shhh_1a"]["Position"] = UDim2.new(0, 2, 0, 94);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Shhh.Bypass.anticheat Ez
-G2L["anticheat Ez_1b"] = Instance.new("TextLabel", G2L["Bypass_13"]);
-G2L["anticheat Ez_1b"]["TextWrapped"] = true;
-G2L["anticheat Ez_1b"]["TextSize"] = 14;
-G2L["anticheat Ez_1b"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["anticheat Ez_1b"]["TextScaled"] = true;
-G2L["anticheat Ez_1b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["anticheat Ez_1b"]["FontFace"] = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["anticheat Ez_1b"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["anticheat Ez_1b"]["BackgroundTransparency"] = 1;
-G2L["anticheat Ez_1b"]["Size"] = UDim2.new(0, 184, 0, 32);
-G2L["anticheat Ez_1b"]["Text"] = [[Bypassers]];
-G2L["anticheat Ez_1b"]["Name"] = [[anticheat Ez]];
-G2L["anticheat Ez_1b"]["Position"] = UDim2.new(0.04287, -4, 0.10006, -12);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Options
-G2L["Options_1c"] = Instance.new("TextLabel", G2L["GmsAdmin_6"]);
-G2L["Options_1c"]["TextWrapped"] = true;
-G2L["Options_1c"]["BorderSizePixel"] = 0;
-G2L["Options_1c"]["TextScaled"] = true;
-G2L["Options_1c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Options_1c"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["Options_1c"]["TextColor3"] = Color3.fromRGB(193, 193, 193);
-G2L["Options_1c"]["BackgroundTransparency"] = 1;
-G2L["Options_1c"]["Size"] = UDim2.new(0, 218, 0, 16);
-G2L["Options_1c"]["Text"] = [[Options]];
-G2L["Options_1c"]["Name"] = [[Options]];
-G2L["Options_1c"]["Position"] = UDim2.new(0, -2, 0, 72);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Options.GmsAdmin
-G2L["GmsAdmin_1d"] = Instance.new("Frame", G2L["Options_1c"]);
-G2L["GmsAdmin_1d"]["Visible"] = false;
-G2L["GmsAdmin_1d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["GmsAdmin_1d"]["AnchorPoint"] = Vector2.new(0.5, 0);
-G2L["GmsAdmin_1d"]["Size"] = UDim2.new(0, 196, 0, 338);
-G2L["GmsAdmin_1d"]["Position"] = UDim2.new(0.5, 412, 0, -72);
-G2L["GmsAdmin_1d"]["Name"] = [[GmsAdmin]];
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Options.GmsAdmin.Subtitle
-G2L["Subtitle_1e"] = Instance.new("TextLabel", G2L["GmsAdmin_1d"]);
-G2L["Subtitle_1e"]["TextWrapped"] = true;
-G2L["Subtitle_1e"]["TextSize"] = 14;
-G2L["Subtitle_1e"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["Subtitle_1e"]["TextTransparency"] = 0.3;
-G2L["Subtitle_1e"]["TextScaled"] = true;
-G2L["Subtitle_1e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Subtitle_1e"]["FontFace"] = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
-G2L["Subtitle_1e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Subtitle_1e"]["BackgroundTransparency"] = 1;
-G2L["Subtitle_1e"]["Size"] = UDim2.new(0, 160, 0, 26);
-G2L["Subtitle_1e"]["Text"] = [[here you can edit the appearance of the gui.]];
-G2L["Subtitle_1e"]["Name"] = [[Subtitle]];
-G2L["Subtitle_1e"]["Position"] = UDim2.new(0.043, 0, 0.2, -12);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Options.GmsAdmin.UICorner
-G2L["UICorner_1f"] = Instance.new("UICorner", G2L["GmsAdmin_1d"]);
-G2L["UICorner_1f"]["CornerRadius"] = UDim.new(0, 13);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Options.GmsAdmin.Configs
-G2L["Configs_20"] = Instance.new("TextLabel", G2L["GmsAdmin_1d"]);
-G2L["Configs_20"]["TextWrapped"] = true;
-G2L["Configs_20"]["TextSize"] = 14;
-G2L["Configs_20"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["Configs_20"]["TextScaled"] = true;
-G2L["Configs_20"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Configs_20"]["FontFace"] = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["Configs_20"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["Configs_20"]["BackgroundTransparency"] = 1;
-G2L["Configs_20"]["Size"] = UDim2.new(0, 186, 0, 36);
-G2L["Configs_20"]["Text"] = [[Options]];
-G2L["Configs_20"]["Name"] = [[Configs]];
-G2L["Configs_20"]["Position"] = UDim2.new(0.04287, -4, 0.10006, -24);
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Options.GmsAdmin.UIGradient
-G2L["UIGradient_21"] = Instance.new("UIGradient", G2L["GmsAdmin_1d"]);
-G2L["UIGradient_21"]["Rotation"] = 80;
-G2L["UIGradient_21"]["Offset"] = Vector2.new(0, 0.65);
-G2L["UIGradient_21"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(0, 0, 0)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(0, 0, 255))};
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.UIGradient
-G2L["UIGradient_22"] = Instance.new("UIGradient", G2L["GmsAdmin_6"]);
-G2L["UIGradient_22"]["Rotation"] = 80;
-G2L["UIGradient_22"]["Offset"] = Vector2.new(0, 0.65);
-G2L["UIGradient_22"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(0, 0, 0)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(0, 0, 255))};
-
-
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.GmsAdmin.Gms
-G2L["Gms_23"] = Instance.new("TextLabel", G2L["GmsAdmin_6"]);
-G2L["Gms_23"]["TextWrapped"] = true;
-G2L["Gms_23"]["TextSize"] = 14;
-G2L["Gms_23"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-G2L["Gms_23"]["TextScaled"] = true;
-G2L["Gms_23"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Gms_23"]["FontFace"] = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["Gms_23"]["TextColor3"] = Color3.fromRGB(241, 241, 241);
-G2L["Gms_23"]["BackgroundTransparency"] = 1;
-G2L["Gms_23"]["Size"] = UDim2.new(0, 316, 0, 36);
-G2L["Gms_23"]["Text"] = [[Gms admin Remake]];
-G2L["Gms_23"]["Name"] = [[Gms]];
-G2L["Gms_23"]["Position"] = UDim2.new(0.04287, -6, 0.10006, -16);
-
-
-
-return G2L["GMSadmin_1"], require;
+local subtitle = Instance.new("TextLabel", frame)
+subtitle.TextWrapped = true
+subtitle.TextScaled = true
+subtitle.TextXAlignment = Enum.TextXAlignment.Left
+subtitle.TextTransparency = 0.3
+subtitle.BackgroundTransparency = 1
+subtitle.Size = UDim2.new(0, 160, 0, 18)
+subtitle.Position = UDim2.new(0.043, 0, 0.2, 12)
+subtitle.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+subtitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+subtitle.Text = "Bypass List"
+
+-- Botões
+local function criarBotao(nome, texto, posY, url)
+    local btn = Instance.new("TextButton", frame)
+    btn.Name = nome
+    btn.TextWrapped = true
+    btn.TextScaled = true
+    btn.BorderSizePixel = 0
+    btn.BackgroundTransparency = 1
+    btn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    btn.FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    btn.TextColor3 = Color3.fromRGB(193, 193, 193)
+    btn.Size = UDim2.new(0, 218, 0, 16)
+    btn.Position = UDim2.new(0, 2, 0, posY)
+    btn.Text = texto
+    btn.MouseButton1Click:Connect(function()
+        loadstring(game:HttpGet(url))()
+    end)
+    return btn
+end
+
+criarBotao("AntiAdminBtn", "Anti admin", 66, "https://rawscripts.net/raw/Universal-Script-Anti-chat-admin-32647")
+criarBotao("AntiKickBtn", "Anti Kick", 90, "https://raw.githubusercontent.com/ADSKerOffical/AntiCheat/main/Bypass")
+criarBotao("NewindexBtn", "Newindex Bypass", 114, "https://rawscripts.net/raw/Baseplate-adonis-and-newindex-bypass-source-12378")
+
+-- Função Toggle
+local visible = false
+function G2L.Toggle()
+    visible = not visible
+    frame.Visible = visible
+end
+
+-- Inicialmente oculto
+frame.Visible = false
+
+return G2L
