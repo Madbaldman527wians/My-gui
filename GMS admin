@@ -1,95 +1,92 @@
---[[
-SubGUI Externo: Anti Detection Scripts
-Deve ser salvo em URL separado e chamado pelo Loader
-]]
 local CollectionService = game:GetService("CollectionService")
 local CoreGui = game:GetService("CoreGui")
 local G2L = {}
 
--- ScreenGui do subGUI
-G2L["AntiDetectionGUI"] = Instance.new("ScreenGui")
-G2L["AntiDetectionGUI"].Name = "AntiDetectionGUI"
-G2L["AntiDetectionGUI"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-G2L["AntiDetectionGUI"].Parent = CoreGui
-CollectionService:AddTag(G2L["AntiDetectionGUI"], "subgui")
+-- ScreenGui principal no CoreGui
+G2L["GMSadmin_1"] = Instance.new("ScreenGui", CoreGui)
+G2L["GMSadmin_1"].Name = "GMSadmin"
+G2L["GMSadmin_1"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+CollectionService:AddTag(G2L["GMSadmin_1"], "main")
 
--- Frame principal
-local frame = Instance.new("Frame", G2L["AntiDetectionGUI"])
-frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-frame.AnchorPoint = Vector2.new(0.5, 0)
-frame.Size = UDim2.new(0, 418, 0, 132)
-frame.Position = UDim2.new(0.5, 12, 0, 226)
-frame.Name = "Anti Detection Scripts"
+-- Frame Anti Detection Scripts
+G2L["Anti Detection Scripts_2"] = Instance.new("Frame", G2L["GMSadmin_1"])
+G2L["Anti Detection Scripts_2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+G2L["Anti Detection Scripts_2"].AnchorPoint = Vector2.new(0.5, 0)
+G2L["Anti Detection Scripts_2"].Size = UDim2.new(0, 418, 0, 132)
+G2L["Anti Detection Scripts_2"].Position = UDim2.new(0.5, 12, 0, 226)
+G2L["Anti Detection Scripts_2"].Name = "Anti Detection Scripts"
+G2L["Anti Detection Scripts_2"].Visible = false -- começa oculto
 
 -- UICorner e UIGradient
-local corner = Instance.new("UICorner", frame)
-corner.CornerRadius = UDim.new(0, 13)
+G2L["UICorner_5"] = Instance.new("UICorner", G2L["Anti Detection Scripts_2"])
+G2L["UICorner_5"].CornerRadius = UDim.new(0, 13)
 
-local gradient = Instance.new("UIGradient", frame)
-gradient.Rotation = 80
-gradient.Offset = Vector2.new(0, 0.65)
-gradient.Color = ColorSequence.new{
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)),
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 255))
+G2L["UIGradient_7"] = Instance.new("UIGradient", G2L["Anti Detection Scripts_2"])
+G2L["UIGradient_7"].Rotation = 80
+G2L["UIGradient_7"].Offset = Vector2.new(0, 0.65)
+G2L["UIGradient_7"].Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0.000, Color3.fromRGB(0, 0, 0)),
+    ColorSequenceKeypoint.new(1.000, Color3.fromRGB(0, 0, 255))
 }
 
--- Título
-local title = Instance.new("TextLabel", frame)
-title.TextWrapped = true
-title.TextScaled = true
-title.TextXAlignment = Enum.TextXAlignment.Left
-title.BackgroundTransparency = 1
-title.Size = UDim2.new(0, 316, 0, 28)
-title.Position = UDim2.new(0.04287, -6, 0.10006, -8)
-title.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-title.TextColor3 = Color3.fromRGB(241, 241, 241)
-title.Text = "Anti Detection Scripts"
+-- Título do frame
+G2L["Anti Detection Title_8"] = Instance.new("TextLabel", G2L["Anti Detection Scripts_2"])
+G2L["Anti Detection Title_8"].TextWrapped = true
+G2L["Anti Detection Title_8"].TextSize = 14
+G2L["Anti Detection Title_8"].TextXAlignment = Enum.TextXAlignment.Left
+G2L["Anti Detection Title_8"].TextScaled = true
+G2L["Anti Detection Title_8"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+G2L["Anti Detection Title_8"].FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+G2L["Anti Detection Title_8"].TextColor3 = Color3.fromRGB(241, 241, 241)
+G2L["Anti Detection Title_8"].BackgroundTransparency = 1
+G2L["Anti Detection Title_8"].Size = UDim2.new(0, 316, 0, 28)
+G2L["Anti Detection Title_8"].Text = "Anti Detection Scripts"
+G2L["Anti Detection Title_8"].Position = UDim2.new(0.04287, -6, 0.10006, -8)
 
 -- Subtitle
-local subtitle = Instance.new("TextLabel", frame)
-subtitle.TextWrapped = true
-subtitle.TextScaled = true
-subtitle.TextXAlignment = Enum.TextXAlignment.Left
-subtitle.TextTransparency = 0.3
-subtitle.BackgroundTransparency = 1
-subtitle.Size = UDim2.new(0, 160, 0, 18)
-subtitle.Position = UDim2.new(0.043, 0, 0.2, 12)
-subtitle.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-subtitle.TextColor3 = Color3.fromRGB(255, 255, 255)
-subtitle.Text = "Bypass List"
+G2L["Subtitle_3"] = Instance.new("TextLabel", G2L["Anti Detection Scripts_2"])
+G2L["Subtitle_3"].TextWrapped = true
+G2L["Subtitle_3"].TextSize = 14
+G2L["Subtitle_3"].TextXAlignment = Enum.TextXAlignment.Left
+G2L["Subtitle_3"].TextTransparency = 0.3
+G2L["Subtitle_3"].TextScaled = true
+G2L["Subtitle_3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+G2L["Subtitle_3"].FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+G2L["Subtitle_3"].TextColor3 = Color3.fromRGB(255, 255, 255)
+G2L["Subtitle_3"].BackgroundTransparency = 1
+G2L["Subtitle_3"].Size = UDim2.new(0, 160, 0, 18)
+G2L["Subtitle_3"].Text = "Bypass List"
+G2L["Subtitle_3"].Position = UDim2.new(0.043, 0, 0.2, 12)
 
--- Botões
+-- Botões (mantendo visual)
 local function criarBotao(nome, texto, posY, url)
-    local btn = Instance.new("TextButton", frame)
+    local btn = Instance.new("TextButton", G2L["Anti Detection Scripts_2"])
     btn.Name = nome
     btn.TextWrapped = true
-    btn.TextScaled = true
     btn.BorderSizePixel = 0
-    btn.BackgroundTransparency = 1
+    btn.TextScaled = true
     btn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     btn.FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
     btn.TextColor3 = Color3.fromRGB(193, 193, 193)
+    btn.BackgroundTransparency = 1
     btn.Size = UDim2.new(0, 218, 0, 16)
-    btn.Position = UDim2.new(0, 2, 0, posY)
     btn.Text = texto
+    btn.Position = UDim2.new(0, 2, 0, posY)
     btn.MouseButton1Click:Connect(function()
         loadstring(game:HttpGet(url))()
     end)
     return btn
 end
 
-criarBotao("AntiAdminBtn", "Anti admin", 66, "https://rawscripts.net/raw/Universal-Script-Anti-chat-admin-32647")
-criarBotao("AntiKickBtn", "Anti Kick", 90, "https://raw.githubusercontent.com/ADSKerOffical/AntiCheat/main/Bypass")
-criarBotao("NewindexBtn", "Newindex Bypass", 114, "https://rawscripts.net/raw/Baseplate-adonis-and-newindex-bypass-source-12378")
+criarBotao("Options_4", "Anti admin", 66, "https://rawscripts.net/raw/Universal-Script-Anti-chat-admin-32647")
+criarBotao("Anti Kick_6", "Anti Kick", 90, "https://raw.githubusercontent.com/ADSKerOffical/AntiCheat/main/Bypass")
+criarBotao("Anti Newindex_9", "Newindex Bypass", 114, "https://rawscripts.net/raw/Baseplate-adonis-and-newindex-bypass-source-12378")
 
--- Função Toggle
-local visible = false
-function G2L.Toggle()
-    visible = not visible
-    frame.Visible = visible
+-- Tabela de exportação compatível com script principal
+local SubGUI = {}
+
+function SubGUI.Toggle()
+    G2L["Anti Detection Scripts_2"].Visible = not G2L["Anti Detection Scripts_2"].Visible
 end
 
--- Inicialmente oculto
-frame.Visible = false
-
-
+return SubGUI
