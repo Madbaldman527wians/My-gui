@@ -81,4 +81,3 @@ function SubGUI.Toggle()
     G2L["AntiDetectionGUI"].Visible = not G2L["AntiDetectionGUI"].Visible
 end
 
-return SubGUI
