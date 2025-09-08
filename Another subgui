@@ -1,0 +1,84 @@
+local CollectionService = game:GetService("CollectionService")
+local CoreGui = game:GetService("CoreGui")
+local G2L = {}
+
+-- Frame Bypass (subGUI)
+G2L["BypassGUI"] = Instance.new("Frame")
+G2L["BypassGUI"].Name = "Bypass"
+G2L["BypassGUI"].Size = UDim2.new(0, 262, 0, 164)
+G2L["BypassGUI"].Position = UDim2.new(0.5, 20, 0, 216)
+G2L["BypassGUI"].AnchorPoint = Vector2.new(0.5, 0)
+G2L["BypassGUI"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+G2L["BypassGUI"].Visible = false -- começa oculto
+
+-- UICorner e UIGradient
+G2L["UICorner"] = Instance.new("UICorner", G2L["BypassGUI"])
+G2L["UICorner"].CornerRadius = UDim.new(0, 13)
+
+G2L["UIGradient"] = Instance.new("UIGradient", G2L["BypassGUI"])
+G2L["UIGradient"].Rotation = 80
+G2L["UIGradient"].Offset = Vector2.new(0, 0.65)
+G2L["UIGradient"].Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0,0,0)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0,0,255))
+}
+
+-- Título
+G2L["Title"] = Instance.new("TextLabel", G2L["BypassGUI"])
+G2L["Title"].Text = "Bypassers"
+G2L["Title"].TextWrapped = true
+G2L["Title"].TextScaled = true
+G2L["Title"].TextXAlignment = Enum.TextXAlignment.Left
+G2L["Title"].BackgroundTransparency = 1
+G2L["Title"].FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+G2L["Title"].TextColor3 = Color3.fromRGB(241, 241, 241)
+G2L["Title"].Size = UDim2.new(0, 184, 0, 32)
+G2L["Title"].Position = UDim2.new(0.04287, -4, 0.10006, -12)
+
+-- Subtitle
+G2L["Subtitle"] = Instance.new("TextLabel", G2L["BypassGUI"])
+G2L["Subtitle"].Text = "Bypass instances and etc."
+G2L["Subtitle"].TextWrapped = true
+G2L["Subtitle"].TextScaled = true
+G2L["Subtitle"].TextXAlignment = Enum.TextXAlignment.Left
+G2L["Subtitle"].TextTransparency = 0.3
+G2L["Subtitle"].BackgroundTransparency = 1
+G2L["Subtitle"].FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+G2L["Subtitle"].TextColor3 = Color3.fromRGB(255, 255, 255)
+G2L["Subtitle"].Size = UDim2.new(0, 136, 0, 30)
+G2L["Subtitle"].Position = UDim2.new(0.043, -4, 0.2, 2)
+
+-- Função para criar botões
+local function criarBotao(nome, texto, posY, url)
+    local btn = Instance.new("TextButton", G2L["BypassGUI"])
+    btn.Name = nome
+    btn.Text = texto
+    btn.TextWrapped = true
+    btn.TextScaled = true
+    btn.BorderSizePixel = 0
+    btn.BackgroundColor3 = Color3.fromRGB(255,255,255)
+    btn.BackgroundTransparency = 1
+    btn.FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    btn.TextColor3 = Color3.fromRGB(193,193,193)
+    btn.Size = UDim2.new(0, 262, 0, 16)
+    btn.Position = UDim2.new(0, 0, 0, posY)
+    btn.MouseButton1Click:Connect(function()
+        loadstring(game:HttpGet(url))()
+    end)
+    return btn
+end
+
+-- Botões
+criarBotao("NoCooldownBtn", "No Cooldown", 72, "URL_NO_COOLDOWN")
+criarBotao("SpeedBypassBtn", "Speed Bypass", 94, "URL_SPEED_BYPASS")
+criarBotao("AntiTeleportBtn", "Anti Teleport", 118, "https://raw.githubusercontent.com/Madbaldman527wians/Raw-test/refs/heads/main/Anti%20teleport")
+criarBotao("AntiJailBtn", "Anti Jail", 142, "URL_ANTI_JAIL")
+
+-- Exportação para script principal
+local SubGUI = {}
+
+function SubGUI.Toggle()
+    G2L["BypassGUI"].Visible = not G2L["BypassGUI"].Visible
+end
+
+return SubGUI
