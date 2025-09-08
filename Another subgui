@@ -1,5 +1,3 @@
-local CollectionService = game:GetService("CollectionService")
-local CoreGui = game:GetService("CoreGui")
 local G2L = {}
 
 -- Frame Bypass (subGUI)
@@ -12,46 +10,45 @@ G2L["BypassGUI"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 G2L["BypassGUI"].Visible = false -- começa oculto
 
 -- UICorner e UIGradient
-G2L["UICorner"] = Instance.new("UICorner", G2L["BypassGUI"])
-G2L["UICorner"].CornerRadius = UDim.new(0, 13)
+local corner = Instance.new("UICorner", G2L["BypassGUI"])
+corner.CornerRadius = UDim.new(0, 13)
 
-G2L["UIGradient"] = Instance.new("UIGradient", G2L["BypassGUI"])
-G2L["UIGradient"].Rotation = 80
-G2L["UIGradient"].Offset = Vector2.new(0, 0.65)
-G2L["UIGradient"].Color = ColorSequence.new{
+local gradient = Instance.new("UIGradient", G2L["BypassGUI"])
+gradient.Rotation = 80
+gradient.Offset = Vector2.new(0, 0.65)
+gradient.Color = ColorSequence.new{
     ColorSequenceKeypoint.new(0, Color3.fromRGB(0,0,0)),
     ColorSequenceKeypoint.new(1, Color3.fromRGB(0,0,255))
 }
 
 -- Título
-G2L["Title"] = Instance.new("TextLabel", G2L["BypassGUI"])
-G2L["Title"].Text = "Bypassers"
-G2L["Title"].TextWrapped = true
-G2L["Title"].TextScaled = true
-G2L["Title"].TextXAlignment = Enum.TextXAlignment.Left
-G2L["Title"].BackgroundTransparency = 1
-G2L["Title"].FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-G2L["Title"].TextColor3 = Color3.fromRGB(241, 241, 241)
-G2L["Title"].Size = UDim2.new(0, 184, 0, 32)
-G2L["Title"].Position = UDim2.new(0.04287, -4, 0.10006, -12)
+local title = Instance.new("TextLabel", G2L["BypassGUI"])
+title.Text = "Bypassers"
+title.TextWrapped = true
+title.TextScaled = true
+title.TextXAlignment = Enum.TextXAlignment.Left
+title.BackgroundTransparency = 1
+title.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+title.TextColor3 = Color3.fromRGB(241, 241, 241)
+title.Size = UDim2.new(0, 184, 0, 32)
+title.Position = UDim2.new(0.04287, -4, 0.10006, -12)
 
 -- Subtitle
-G2L["Subtitle"] = Instance.new("TextLabel", G2L["BypassGUI"])
-G2L["Subtitle"].Text = "Bypass instances and etc."
-G2L["Subtitle"].TextWrapped = true
-G2L["Subtitle"].TextScaled = true
-G2L["Subtitle"].TextXAlignment = Enum.TextXAlignment.Left
-G2L["Subtitle"].TextTransparency = 0.3
-G2L["Subtitle"].BackgroundTransparency = 1
-G2L["Subtitle"].FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-G2L["Subtitle"].TextColor3 = Color3.fromRGB(255, 255, 255)
-G2L["Subtitle"].Size = UDim2.new(0, 136, 0, 30)
-G2L["Subtitle"].Position = UDim2.new(0.043, -4, 0.2, 2)
+local subtitle = Instance.new("TextLabel", G2L["BypassGUI"])
+subtitle.Text = "Bypass instances and etc."
+subtitle.TextWrapped = true
+subtitle.TextScaled = true
+subtitle.TextXAlignment = Enum.TextXAlignment.Left
+subtitle.TextTransparency = 0.3
+subtitle.BackgroundTransparency = 1
+subtitle.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+subtitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+subtitle.Size = UDim2.new(0, 136, 0, 30)
+subtitle.Position = UDim2.new(0.043, -4, 0.2, 2)
 
 -- Função para criar botões
-local function criarBotao(nome, texto, posY, url)
+local function criarBotao(texto, posY, url)
     local btn = Instance.new("TextButton", G2L["BypassGUI"])
-    btn.Name = nome
     btn.Text = texto
     btn.TextWrapped = true
     btn.TextScaled = true
@@ -69,15 +66,19 @@ local function criarBotao(nome, texto, posY, url)
 end
 
 -- Botões
-criarBotao("NoCooldownBtn", "No Cooldown", 72, "URL_NO_COOLDOWN")
-criarBotao("SpeedBypassBtn", "Speed Bypass", 94, "URL_SPEED_BYPASS")
-criarBotao("AntiTeleportBtn", "Anti Teleport", 118, "https://raw.githubusercontent.com/Madbaldman527wians/Raw-test/refs/heads/main/Anti%20teleport")
-criarBotao("AntiJailBtn", "Anti Jail", 142, "URL_ANTI_JAIL")
+criarBotao("No Cooldown", 72, "URL_NO_COOLDOWN")
+criarBotao("Speed Bypass", 94, "URL_SPEED_BYPASS")
+criarBotao("Anti Teleport", 118, "https://raw.githubusercontent.com/Madbaldman527wians/Raw-test/refs/heads/main/Anti%20teleport")
+criarBotao("Anti Jail", 142, "URL_ANTI_JAIL")
 
--- Exportação para script principal
+-- Exportação do subGUI
 local SubGUI = {}
 
-function SubGUI.Toggle()
+function SubGUI.Toggle(parent)
+    if not G2L["BypassGUI"].Parent then
+        -- Caso não tenha pai, coloca dentro do CoreGui
+        G2L["BypassGUI"].Parent = parent or game:GetService("CoreGui")
+    end
     G2L["BypassGUI"].Visible = not G2L["BypassGUI"].Visible
 end
 
