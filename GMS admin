@@ -1,40 +1,111 @@
--- Instances: 35 | Scripts: 0 | Modules: 0 | Tags: 1
-local CollectionService = game:GetService("CollectionService");
-local G2L = {};
+local CollectionService = game:GetService("CollectionService")
+local CoreGui = game:GetService("CoreGui")
+local G2L = {}
 
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin
-G2L["GMSadmin_1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
-G2L["GMSadmin_1"]["Name"] = [[GMSadmin]];
-G2L["GMSadmin_1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+-- ScreenGui principal no CoreGui
+G2L["GMSadmin_1"] = Instance.new("ScreenGui", CoreGui)
+G2L["GMSadmin_1"].Name = "GMSadmin"
+G2L["GMSadmin_1"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+CollectionService:AddTag(G2L["GMSadmin_1"], "main")
 
--- Tags
-CollectionService:AddTag(G2L["GMSadmin_1"], [[main]]);
+-- Frame Anti Detection Scripts
+G2L["Anti Detection Scripts_2"] = Instance.new("Frame", G2L["GMSadmin_1"])
+G2L["Anti Detection Scripts_2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+G2L["Anti Detection Scripts_2"].AnchorPoint = Vector2.new(0.5, 0)
+G2L["Anti Detection Scripts_2"].Size = UDim2.new(0, 418, 0, 132)
+G2L["Anti Detection Scripts_2"].Position = UDim2.new(0.5, 12, 0, 226)
+G2L["Anti Detection Scripts_2"].Name = "Anti Detection Scripts"
 
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.Enable/Disable gui
-G2L["Enable/Disable gui_2"] = Instance.new("Frame", G2L["GMSadmin_1"]);
-G2L["Enable/Disable gui_2"]["BorderSizePixel"] = 0;
-G2L["Enable/Disable gui_2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Enable/Disable gui_2"]["Size"] = UDim2.new(0, 64, 0, 62);
-G2L["Enable/Disable gui_2"]["Position"] = UDim2.new(0, 750, 0, 18);
-G2L["Enable/Disable gui_2"]["Name"] = [[Enable/Disable gui]];
+-- UIGradient e UICorner (mantidos)
+G2L["UICorner_5"] = Instance.new("UICorner", G2L["Anti Detection Scripts_2"])
+G2L["UICorner_5"].CornerRadius = UDim.new(0, 13)
 
+G2L["UIGradient_7"] = Instance.new("UIGradient", G2L["Anti Detection Scripts_2"])
+G2L["UIGradient_7"].Rotation = 80
+G2L["UIGradient_7"].Offset = Vector2.new(0, 0.65)
+G2L["UIGradient_7"].Color = ColorSequence.new{
+ColorSequenceKeypoint.new(0.000, Color3.fromRGB(0, 0, 0)),
+ColorSequenceKeypoint.new(1.000, Color3.fromRGB(0, 0, 255))
+}
 
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.Enable/Disable gui.UICorner
-G2L["UICorner_3"] = Instance.new("UICorner", G2L["Enable/Disable gui_2"]);
-G2L["UICorner_3"]["CornerRadius"] = UDim.new(0.5, 0);
+-- Título do frame
+G2L["Anti Detection Title_8"] = Instance.new("TextLabel", G2L["Anti Detection Scripts_2"])
+G2L["Anti Detection Title_8"].TextWrapped = true
+G2L["Anti Detection Title_8"].TextSize = 14
+G2L["Anti Detection Title_8"].TextXAlignment = Enum.TextXAlignment.Left
+G2L["Anti Detection Title_8"].TextScaled = true
+G2L["Anti Detection Title_8"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+G2L["Anti Detection Title_8"].FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+G2L["Anti Detection Title_8"].TextColor3 = Color3.fromRGB(241, 241, 241)
+G2L["Anti Detection Title_8"].BackgroundTransparency = 1
+G2L["Anti Detection Title_8"].Size = UDim2.new(0, 316, 0, 28)
+G2L["Anti Detection Title_8"].Text = "Anti Detection Scripts"
+G2L["Anti Detection Title_8"].Position = UDim2.new(0.04287, -6, 0.10006, -8)
 
+-- Subtitle
+G2L["Subtitle_3"] = Instance.new("TextLabel", G2L["Anti Detection Scripts_2"])
+G2L["Subtitle_3"].TextWrapped = true
+G2L["Subtitle_3"].TextSize = 14
+G2L["Subtitle_3"].TextXAlignment = Enum.TextXAlignment.Left
+G2L["Subtitle_3"].TextTransparency = 0.3
+G2L["Subtitle_3"].TextScaled = true
+G2L["Subtitle_3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+G2L["Subtitle_3"].FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+G2L["Subtitle_3"].TextColor3 = Color3.fromRGB(255, 255, 255)
+G2L["Subtitle_3"].BackgroundTransparency = 1
+G2L["Subtitle_3"].Size = UDim2.new(0, 160, 0, 18)
+G2L["Subtitle_3"].Text = "Bypass List"
+G2L["Subtitle_3"].Position = UDim2.new(0.043, 0, 0.2, 12)
 
--- Players.brigadeiro_1313h.PlayerGui.GMSadmin.Enable/Disable gui.Name
-G2L["Name_4"] = Instance.new("TextLabel", G2L["Enable/Disable gui_2"]);
-G2L["Name_4"]["TextWrapped"] = true;
-G2L["Name_4"]["BorderSizePixel"] = 0;
-G2L["Name_4"]["TextScaled"] = true;
-G2L["Name_4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Name_4"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["Name_4"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["Name_4"]["BackgroundTransparency"] = 1;
-G2L["Name_4"]["Size"] = UDim2.new(0, 60, 0, 18);
-G2L["Name_4"]["Text"] = [[GMS]];
+-- Botão Anti Admin
+G2L["Options_4"] = Instance.new("TextButton", G2L["Anti Detection Scripts_2"])
+G2L["Options_4"].TextWrapped = true
+G2L["Options_4"].BorderSizePixel = 0
+G2L["Options_4"].TextScaled = true
+G2L["Options_4"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+G2L["Options_4"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+G2L["Options_4"].TextColor3 = Color3.fromRGB(193, 193, 193)
+G2L["Options_4"].BackgroundTransparency = 1
+G2L["Options_4"].Size = UDim2.new(0, 218, 0, 16)
+G2L["Options_4"].Text = "Anti admin"
+G2L["Options_4"].Position = UDim2.new(0, 2, 0, 66)
+G2L["Options_4"].MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Anti-chat-admin-32647"))()
+end)
+
+-- Botão Anti Kick
+G2L["Anti Kick_6"] = Instance.new("TextButton", G2L["Anti Detection Scripts_2"])
+G2L["Anti Kick_6"].TextWrapped = true
+G2L["Anti Kick_6"].BorderSizePixel = 0
+G2L["Anti Kick_6"].TextScaled = true
+G2L["Anti Kick_6"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+G2L["Anti Kick_6"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+G2L["Anti Kick_6"].TextColor3 = Color3.fromRGB(193, 193, 193)
+G2L["Anti Kick_6"].BackgroundTransparency = 1
+G2L["Anti Kick_6"].Size = UDim2.new(0, 218, 0, 16)
+G2L["Anti Kick_6"].Text = "Anti Kick"
+G2L["Anti Kick_6"].Position = UDim2.new(0, 2, 0, 90)
+G2L["Anti Kick_6"].MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/AntiCheat/main/Bypass"))()
+end)
+
+-- Botão Newindex Bypass
+G2L["Anti Newindex_9"] = Instance.new("TextButton", G2L["Anti Detection Scripts_2"])
+G2L["Anti Newindex_9"].TextWrapped = true
+G2L["Anti Newindex_9"].BorderSizePixel = 0
+G2L["Anti Newindex_9"].TextScaled = true
+G2L["Anti Newindex_9"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+G2L["Anti Newindex_9"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+G2L["Anti Newindex_9"].TextColor3 = Color3.fromRGB(193, 193, 193)
+G2L["Anti Newindex_9"].BackgroundTransparency = 1
+G2L["Anti Newindex_9"].Size = UDim2.new(0, 222, 0, 16)
+G2L["Anti Newindex_9"].Text = "Newindex Bypass"
+G2L["Anti Newindex_9"].Position = UDim2.new(0, -2, 0, 114)
+G2L["Anti Newindex_9"].MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://rawscripts.net/raw/Baseplate-adonis-and-newindex-bypass-source-12378"))()
+end)
+
+return G2L["GMSadmin_1"], requireG2L["Name_4"]["Text"] = [[GMS]];
 G2L["Name_4"]["Name"] = [[Name]];
 G2L["Name_4"]["Position"] = UDim2.new(0, 2, 0, 24);
 
